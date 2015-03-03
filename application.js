@@ -8,7 +8,5 @@ module.exports = new ContainershipPlugin({
         cloud_hints.get_hints(core);
     },
 
-    reload: function(){
-        server.exit();
-    }
+    reload: function(){}
 });
