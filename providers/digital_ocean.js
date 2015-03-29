@@ -1,3 +1,4 @@
+var _ = require("lodash");
 var async = require("async");
 var request = require("request");
 
@@ -13,8 +14,10 @@ module.exports = {
                 }
 
                 request(options, function(err, response){
-                    if(err || response.statusCode != 200)
-                        return fn();
+                    if(err)
+                        return fn(err);
+                    else if(response.statusCode != 200)
+                        return fn(new Error(["Request returned status code:", response.statusCode].join(" ")));
                     else
                         return fn(null, response.body);
                 });
@@ -28,15 +31,21 @@ module.exports = {
                 }
 
                 request(options, function(err, response){
-                    if(err || response.statusCode != 200)
-                        return fn();
+                    if(err)
+                        return fn(err);
+                    else if(response.statusCode != 200)
+                        return fn(new Error(["Request returned status code:", response.statusCode].join(" ")));
                     else
                         return fn(null, response.body);
                 });
             }
         }, function(err, metadata){
-            metadata.provider = "digitalocean";
-            return fn(metadata);
+            if(_.isUndefined(err)){
+                metadata.provider = "digitalocean";
+                return fn(metadata);
+            }
+            else
+                return fn();
         });
     }
 
