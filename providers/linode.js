@@ -1,6 +1,4 @@
-var _ = require("lodash");
-var async = require("async");
-var request = require("request");
+var os = require("os");
 
 module.exports = {
 
