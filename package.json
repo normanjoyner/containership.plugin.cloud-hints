@@ -1,6 +1,6 @@
 {
   "name": "containership.plugin.cloud-hints",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A ContainerShip plugin used to automatically set cloud metadata in the form of host tags",
   "main": "application.js",
   "scripts": {
