@@ -17,10 +17,11 @@ module.exports = {
                 return fn();
             });
         }, function(){
+            var attributes = core.cluster.legiond.get_attributes();
             core.cluster.legiond.set_attributes({
-                tags: {
+                tags: _.defaults({
                     cloud: cloud
-                }
+                }, attributes.tags)
             });
         });
     }
