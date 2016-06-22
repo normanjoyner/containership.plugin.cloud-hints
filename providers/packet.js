@@ -6,7 +6,7 @@ module.exports = {
     is_true: function(fn){
 
         var options = {
-            url: "https://metadata.packet.net",
+            url: "https://metadata.packet.net/metadata",
             method: "GET",
             timeout: 5000,
             json: true
