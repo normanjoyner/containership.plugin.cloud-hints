@@ -8,7 +8,8 @@ module.exports = {
         var options = {
             url: "https://metadata.packet.net",
             method: "GET",
-            timeout: 5000
+            timeout: 5000,
+            json: true
         }
 
         request(options, function(err, response){
@@ -16,6 +17,9 @@ module.exports = {
                 return fn();
             else{
                 return fn({
+                    id: response.body.id,
+                    plan: response.body.plan,
+                    facility: response.body.facility,
                     provider: "packet"
                 });
             }
